@@ -111,7 +111,7 @@ int main(int argc, char* args[]) {
                 gDeltaTime.update();
 
                 //Move the dot
-                dot.move(wall ,otherDot.getCollider());
+                dot.move(&wall);
 
                 //Center the camera over the dot
                 camera.x = dot.getPosX() - gWindow.getWidth() / 2;
@@ -147,7 +147,6 @@ int main(int argc, char* args[]) {
 
                 //Render textures
                 dot.render(gRenderer, camera.x, camera.y);
-                otherDot.render(gRenderer, camera.x, camera.y);
                 gFPSTextTexture.render(gRenderer, 0, 0);
 
                 //Update screen

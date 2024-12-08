@@ -24,12 +24,6 @@ bool loadMedia() {
         success = false;
     }
 
-    //Load other dot texture
-    if (!otherDot.loadTexture(gRenderer, "../assets/images/dot.bmp")) {
-        printf("Failed to load other dot.png!");
-        success = false;
-    }
-
     //Load red texture
     if (!gRedTexture.loadFromFile(gRenderer, "../assets/images/red.bmp")) {
         printf("Failed to load red.bmp!");

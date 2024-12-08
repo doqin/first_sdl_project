@@ -64,9 +64,6 @@ Objects
 //The dot that will be moving around on the screen
 LDot dot(LDot::DOT_WIDTH / 2, LDot::DOT_HEIGHT / 2);
 
-//The dot that will be collided against
-LDot otherDot(WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4);
-
 //The window we're rendering to
 LWindow gWindow;
 

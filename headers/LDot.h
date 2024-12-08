@@ -37,7 +37,7 @@ public:
     void handleEvent(const SDL_Event &e);
 
     //Moves the dot
-    void move(const SDL_Rect& square, const Circle& circle);
+    void move(const SDL_Rect *square, const Circle *circle);
 
     //Load texture for dot
     bool loadTexture(SDL_Renderer *mRenderer, const std::string &path);
@@ -65,7 +65,7 @@ private:
     float mPosX, mPosY;
 
     //The velocity of the dot
-    int mVelX, mVelY;
+    float mVelX, mVelY;
 
     //The dot's texture
     LTexture mDotTexture;
@@ -188,7 +188,7 @@ inline void LDot::handleEvent(const SDL_Event &e) {
 }
 
 //Moves the dot
-inline void LDot::move(const SDL_Rect& square, const Circle& circle) {
+inline void LDot::move(const SDL_Rect* square = nullptr, const Circle* circle = nullptr) {
 
     //Delta time
     const float delta = gDeltaTime.getDeltaTime();
@@ -198,7 +198,7 @@ inline void LDot::move(const SDL_Rect& square, const Circle& circle) {
     shiftColliders();
 
     //If the dot went too far to the left or right
-    if ((mPosX - mCollider.r < 0) || (mPosX + mCollider.r > LEVEL_WIDTH) || checkCollision(mCollider, square) || checkCollision(mCollider, circle)) {
+    if ((mPosX - mCollider.r < 0) || (mPosX + mCollider.r > LEVEL_WIDTH) || (square ? checkCollision(&mCollider, square) : circle ? checkCollision(&mCollider, circle) : false)) {
         //Move back
         mPosX -= mVelX * delta;
         shiftColliders();
@@ -209,7 +209,7 @@ inline void LDot::move(const SDL_Rect& square, const Circle& circle) {
     shiftColliders();
 
     //If the dot went too far up or down
-    if ((mPosY - mCollider.r < 0) || (mPosY + mCollider.r > LEVEL_HEIGHT) || checkCollision(mCollider, square) || checkCollision(mCollider, circle)) {
+    if ((mPosY - mCollider.r < 0.f) || (mPosY + mCollider.r > LEVEL_HEIGHT) || (square ? checkCollision(&mCollider, square) : circle ? checkCollision(&mCollider, circle) : false)) {
         //Move back
         mPosY -= mVelY * delta;
         shiftColliders();
@@ -276,9 +276,5 @@ Objects
 
 //The dot that will be moving around on the screen
 extern LDot dot;
-
-//The dot that will be collided against
-extern LDot otherDot;
-
 
 #endif //LDOT_H

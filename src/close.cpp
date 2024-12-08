@@ -33,7 +33,6 @@ void close() {
 
     //Free dots
     dot.free();
-    otherDot.free();
 
     //Close game controller
     freeController();
