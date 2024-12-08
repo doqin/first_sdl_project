@@ -46,8 +46,8 @@ void eventHandler(bool &quit, SDL_Event e) {
     //Handle window events
     gWindow.handleEvent(e);
 
-    camera.w = gWindow.getWidth();
-    camera.h = gWindow.getHeight();
+    //Update camera width and height
+    gCamera.updateSize(gWindow.getWidth(), gWindow.getHeight());
 
     //Handle input for the dot
     dot.handleEvent(e);

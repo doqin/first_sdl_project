@@ -38,9 +38,6 @@ Non-constant variables
 extern float xDir;
 extern float yDir;
 
-//The camera area
-extern SDL_Rect camera;
-
 //Display data
 extern int gTotalDisplays;
 extern SDL_Rect* gDisplayBounds;

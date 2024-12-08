@@ -23,4 +23,7 @@
 //Get DeltaTime class
 #include "DeltaTime.h"
 
+//Get LCamera class
+#include "LCamera.h"
+
 #endif //ALLHEADERS_H

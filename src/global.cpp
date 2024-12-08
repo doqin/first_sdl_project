@@ -36,7 +36,7 @@ float xDir = 0;
 float yDir = 0;
 
 //The camera area
-SDL_Rect camera = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
+LCamera gCamera = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
 
 //Display data
 int gTotalDisplays = 0;

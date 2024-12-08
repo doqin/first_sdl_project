@@ -113,23 +113,8 @@ int main(int argc, char* args[]) {
                 //Move the dot
                 dot.move(&wall);
 
-                //Center the camera over the dot
-                camera.x = dot.getPosX() - gWindow.getWidth() / 2;
-                camera.y = dot.getPosY() - gWindow.getHeight() / 2;
-
-                //Keep the camera in bounds
-                if (camera.x < 0) {
-                    camera.x = 0;
-                }
-                if (camera.y < 0) {
-                    camera.y = 0;
-                }
-                if (camera.x > LEVEL_WIDTH - camera.w) {
-                    camera.x = LEVEL_WIDTH - camera.w;
-                }
-                if (camera.y > LEVEL_HEIGHT - camera.h) {
-                    camera.y = LEVEL_HEIGHT - camera.h;
-                }
+                //Update camera position
+                gCamera.updatePosition(dot.getPosX(), dot.getPosY());
 
                 //Clear screen
                 gWindow.clear();
@@ -139,14 +124,18 @@ int main(int argc, char* args[]) {
                     printf("Unable to render text!");
                 }
 
+                //Get camera position
+                const int cameraPosX = gCamera.getX();
+                const int cameraPosY = gCamera.getY();
+
                 //Render wall
                 SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
-                relativeWall.x = wall.x - camera.x;
-                relativeWall.y = wall.y - camera.y;
+                relativeWall.x = wall.x - cameraPosX;
+                relativeWall.y = wall.y - cameraPosY;
                 SDL_RenderDrawRect(gRenderer, &relativeWall);
 
                 //Render textures
-                dot.render(gRenderer, camera.x, camera.y);
+                dot.render(gRenderer, cameraPosX, cameraPosY);
                 gFPSTextTexture.render(gRenderer, 0, 0);
 
                 //Update screen

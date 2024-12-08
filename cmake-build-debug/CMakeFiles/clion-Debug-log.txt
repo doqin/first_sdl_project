@@ -1,4 +1,4 @@
 /Applications/JetBrains/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/JetBrains/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/doqin/CLionProjects/first_sdl_project -B /Users/doqin/CLionProjects/first_sdl_project/cmake-build-debug
--- Configuring done (0.0s)
+-- Configuring done (0.1s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/doqin/CLionProjects/first_sdl_project/cmake-build-debug

@@ -23,6 +23,7 @@ add_executable(${PROJECT_NAME}
         src/main.cpp
         src/global.cpp
         src/eventHandler.cpp
+        headers/LCamera.h
         #src/readWriteFile.cpp
         #src/textInput.cpp
 )
