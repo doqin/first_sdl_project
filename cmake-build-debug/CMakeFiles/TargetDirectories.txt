@@ -1,0 +1,3 @@
+/Users/doqin/CLionProjects/first_sdl_project/cmake-build-debug/CMakeFiles/first_sdl_project.dir
+/Users/doqin/CLionProjects/first_sdl_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/doqin/CLionProjects/first_sdl_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
