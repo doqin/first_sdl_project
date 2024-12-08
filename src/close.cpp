@@ -24,12 +24,20 @@ void freeController() {
 
 //Frees media and shuts down SDL
 void close() {
+    //Deallocate tiles
+    for( int i = 0; i < TOTAL_TILES; ++i )
+    {
+        if( tiles[ i ] != nullptr )
+        {
+            delete tiles[ i ];
+            tiles[ i ] = nullptr;
+        }
+    }
+
     //Free loaded image
     gFPSTextTexture.free();
-    gRedTexture.free();
-    gGreenTexture.free();
-    gBlueTexture.free();
     gShimmerTexture.free();
+    gTileTexture.free();
 
     //Free dots
     dot.free();

@@ -5,9 +5,9 @@
 #ifndef LDOT_H
 #define LDOT_H
 #include <SDL.h>
+#include "LTile.h"
 #include "Circle.h"
 #include "LParticle.h"
-#include "CollisionDetection.h"
 #include "DeltaTime.h"
 #include "global.h"
 #include "LTexture.h"
@@ -16,6 +16,8 @@ extern const int LEVEL_WIDTH;
 extern const int LEVEL_HEIGHT;
 
 inline constexpr int TOTAL_PARTICLES = 20;
+
+bool touchesWall(const Circle* circle, LTile* tiles[]);
 
 //The dot that will move around on the screen
 class LDot {
@@ -37,7 +39,7 @@ public:
     void handleEvent(const SDL_Event &e);
 
     //Moves the dot
-    void move(const SDL_Rect *square, const Circle *circle);
+    void move(LTile *tiles[]);
 
     //Load texture for dot
     bool loadTexture(SDL_Renderer *mRenderer, const std::string &path);
@@ -45,8 +47,11 @@ public:
     //Deallocate texture
     void free();
 
+    //Centers the camera over the dot
+    void setCamera(LCamera& camera);
+
     //Shows the dot of the screen
-    void render(SDL_Renderer* mRenderer, int camX, int camY);
+    void render(SDL_Renderer* mRenderer, LCamera& camera);
 
     //Gets collision circle
     Circle& getCollider();
@@ -188,7 +193,7 @@ inline void LDot::handleEvent(const SDL_Event &e) {
 }
 
 //Moves the dot
-inline void LDot::move(const SDL_Rect* square = nullptr, const Circle* circle = nullptr) {
+inline void LDot::move(LTile* tiles[]) {
 
     //Delta time
     const float delta = gDeltaTime.getDeltaTime();
@@ -198,7 +203,7 @@ inline void LDot::move(const SDL_Rect* square = nullptr, const Circle* circle = 
     shiftColliders();
 
     //If the dot went too far to the left or right
-    if ((mPosX - mCollider.r < 0) || (mPosX + mCollider.r > LEVEL_WIDTH) || (square ? checkCollision(&mCollider, square) : circle ? checkCollision(&mCollider, circle) : false)) {
+    if ((mPosX - mCollider.r < 0) || (mPosX + mCollider.r > LEVEL_WIDTH) || touchesWall(&mCollider, tiles)) {
         //Move back
         mPosX -= mVelX * delta;
         shiftColliders();
@@ -209,7 +214,7 @@ inline void LDot::move(const SDL_Rect* square = nullptr, const Circle* circle = 
     shiftColliders();
 
     //If the dot went too far up or down
-    if ((mPosY - mCollider.r < 0.f) || (mPosY + mCollider.r > LEVEL_HEIGHT) || (square ? checkCollision(&mCollider, square) : circle ? checkCollision(&mCollider, circle) : false)) {
+    if ((mPosY - mCollider.r < 0.f) || (mPosY + mCollider.r > LEVEL_HEIGHT) || touchesWall(&mCollider, tiles)) {
         //Move back
         mPosY -= mVelY * delta;
         shiftColliders();
@@ -226,13 +231,33 @@ inline void LDot::free() {
     mDotTexture.free();
 }
 
+inline void LDot::setCamera(LCamera& camera) {
+    //Center the camera over the dot
+    camera.updatePosX(mPosX - camera.getWidth() / 2);
+    camera.updatePosY(mPosY - camera.getHeight() / 2);
+
+    //Keep the camera in bounds
+    if (camera.getX() < 0) {
+        camera.updatePosX(0);
+    }
+    if (camera.getY() < 0) {
+        camera.updatePosY(0);
+    }
+    if (camera.getX() > LEVEL_WIDTH - camera.getWidth()) {
+        camera.updatePosX(LEVEL_WIDTH - camera.getWidth());
+    }
+    if (camera.getY() > LEVEL_HEIGHT - camera.getHeight()) {
+        camera.updatePosY(LEVEL_HEIGHT - camera.getHeight());
+    }
+}
+
 //Shows the dot of the screen
-inline void LDot::render(SDL_Renderer* mRenderer, const int camX, const int camY) {
+inline void LDot::render(SDL_Renderer* mRenderer, LCamera& camera) {
     //Show particles
-    renderParticles(mRenderer, camX, camY);
+    renderParticles(mRenderer, camera.getX(), camera.getY());
 
     //Show the dot
-    mDotTexture.render(mRenderer, mPosX - mCollider.r - camX, mPosY - mCollider.r - camY);
+    mDotTexture.render(mRenderer, mPosX - mCollider.r - camera.getX(), mPosY - mCollider.r - camera.getY());
 }
 
 //Gets collision circle

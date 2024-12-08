@@ -91,6 +91,20 @@ build CMakeFiles/first_sdl_project.dir/src/eventHandler.cpp.o: CXX_COMPILER__fir
   OBJECT_DIR = CMakeFiles/first_sdl_project.dir
   OBJECT_FILE_DIR = CMakeFiles/first_sdl_project.dir/src
 
+build CMakeFiles/first_sdl_project.dir/src/collisionDetection.cpp.o: CXX_COMPILER__first_sdl_project_unscanned_Debug /Users/doqin/CLionProjects/first_sdl_project/src/collisionDetection.cpp || cmake_object_order_depends_target_first_sdl_project
+  DEP_FILE = CMakeFiles/first_sdl_project.dir/src/collisionDetection.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.30.9/include -isystem /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_image/2.8.2_2/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_ttf/2.22.0/include/SDL2
+  OBJECT_DIR = CMakeFiles/first_sdl_project.dir
+  OBJECT_FILE_DIR = CMakeFiles/first_sdl_project.dir/src
+
+build CMakeFiles/first_sdl_project.dir/src/render.cpp.o: CXX_COMPILER__first_sdl_project_unscanned_Debug /Users/doqin/CLionProjects/first_sdl_project/src/render.cpp || cmake_object_order_depends_target_first_sdl_project
+  DEP_FILE = CMakeFiles/first_sdl_project.dir/src/render.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.6 -fcolor-diagnostics
+  INCLUDES = -I/opt/homebrew/Cellar/sdl2/2.30.9/include -isystem /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_image/2.8.2_2/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_mixer/2.8.0/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2_ttf/2.22.0/include/SDL2
+  OBJECT_DIR = CMakeFiles/first_sdl_project.dir
+  OBJECT_FILE_DIR = CMakeFiles/first_sdl_project.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target first_sdl_project
@@ -99,7 +113,7 @@ build CMakeFiles/first_sdl_project.dir/src/eventHandler.cpp.o: CXX_COMPILER__fir
 #############################################
 # Link the executable first_sdl_project
 
-build first_sdl_project: CXX_EXECUTABLE_LINKER__first_sdl_project_Debug CMakeFiles/first_sdl_project.dir/src/loadMedia.cpp.o CMakeFiles/first_sdl_project.dir/src/close.cpp.o CMakeFiles/first_sdl_project.dir/src/init.cpp.o CMakeFiles/first_sdl_project.dir/src/main.cpp.o CMakeFiles/first_sdl_project.dir/src/global.cpp.o CMakeFiles/first_sdl_project.dir/src/eventHandler.cpp.o | /opt/homebrew/Cellar/sdl2/2.30.9/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_image/2.8.2_2/lib/libSDL2_image.dylib /opt/homebrew/Cellar/sdl2_mixer/2.8.0/lib/libSDL2_mixer.dylib /opt/homebrew/Cellar/sdl2_ttf/2.22.0/lib/libSDL2_ttf.dylib
+build first_sdl_project: CXX_EXECUTABLE_LINKER__first_sdl_project_Debug CMakeFiles/first_sdl_project.dir/src/loadMedia.cpp.o CMakeFiles/first_sdl_project.dir/src/close.cpp.o CMakeFiles/first_sdl_project.dir/src/init.cpp.o CMakeFiles/first_sdl_project.dir/src/main.cpp.o CMakeFiles/first_sdl_project.dir/src/global.cpp.o CMakeFiles/first_sdl_project.dir/src/eventHandler.cpp.o CMakeFiles/first_sdl_project.dir/src/collisionDetection.cpp.o CMakeFiles/first_sdl_project.dir/src/render.cpp.o | /opt/homebrew/Cellar/sdl2/2.30.9/lib/libSDL2.dylib /opt/homebrew/Cellar/sdl2_image/2.8.2_2/lib/libSDL2_image.dylib /opt/homebrew/Cellar/sdl2_mixer/2.8.0/lib/libSDL2_mixer.dylib /opt/homebrew/Cellar/sdl2_ttf/2.22.0/lib/libSDL2_ttf.dylib
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.6
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.30.9/lib  /opt/homebrew/Cellar/sdl2/2.30.9/lib/libSDL2.dylib  /opt/homebrew/Cellar/sdl2_image/2.8.2_2/lib/libSDL2_image.dylib  /opt/homebrew/Cellar/sdl2_mixer/2.8.0/lib/libSDL2_mixer.dylib  /opt/homebrew/Cellar/sdl2_ttf/2.22.0/lib/libSDL2_ttf.dylib
   LINK_PATH = -L/opt/homebrew/Cellar/sdl2/2.30.9/lib

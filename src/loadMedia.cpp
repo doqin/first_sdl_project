@@ -20,41 +20,29 @@ bool loadMedia() {
 
     //Load dot texture
     if (!dot.loadTexture(gRenderer, "../assets/images/dot.bmp")) {
-        printf("Failed to load dot.png!");
+        printf("Failed to load dot.png!\n");
         success = false;
     }
 
-    //Load red texture
-    if (!gRedTexture.loadFromFile(gRenderer, "../assets/images/red.bmp")) {
-        printf("Failed to load red.bmp!");
+    if (!gTileTexture.loadFromFile(gRenderer, "../assets/images/tiles.png")) {
+        printf("Failed to load tiles.png!\n");
         success = false;
     }
 
-    //Load green texture
-    if (!gGreenTexture.loadFromFile(gRenderer, "../assets/images/green.bmp")) {
-        printf("Failed to load green.bmp!");
-        success = false;
-    }
-
-    //Load blue texture
-    if (!gBlueTexture.loadFromFile(gRenderer, "../assets/images/blue.bmp")) {
-        printf("Failed to load blue.bmp!");
+    //Load tile map
+    if (!setTiles(tiles, "../data/lazy.map")) {
+        printf("Failed to set tiles!\n");
         success = false;
     }
 
     //Load shimmer texture
     if (!gShimmerTexture.loadFromFile(gRenderer, "../assets/images/shimmer.bmp")) {
-        printf("Failed to load shimmer.bmp!");
+        printf("Failed to load shimmer.bmp!\n");
         success = false;
     }
 
-    //Set texture transparency
-    gRedTexture.setAlpha(192);
-    gGreenTexture.setAlpha(192);
-    gBlueTexture.setAlpha(192);
-    gShimmerTexture.setAlpha(192);
-
     //Free gRenderer
+    // ReSharper disable once CppDFAUnusedValue
     gRenderer = nullptr;
     return success;
 }

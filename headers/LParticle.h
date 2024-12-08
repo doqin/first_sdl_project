@@ -4,8 +4,6 @@
 
 #ifndef LPARTICLE_H
 #define LPARTICLE_H
-#include <iostream>
-
 #include "LTexture.h"
 
 //Particle engine
@@ -46,21 +44,12 @@ inline Particle::Particle(const int x, const int y, const int duration) {
     mDuration = duration;
 
     //Set type
-    switch (rand() % 3) {
-        case 0: mTexture = &gRedTexture; break;
-        case 1: mTexture = &gGreenTexture; break;
-        case 2: mTexture = &gBlueTexture; break;
-    }
+    mTexture = &gShimmerTexture;
 }
 
 inline void Particle::render(SDL_Renderer* mRenderer, const int camX, const int camY) {
     //Show image
-    mTexture->renderOnce(mRenderer, static_cast<Uint8>(192.0 * (1.0 - static_cast<float>(mFrame) / mDuration)), mPosX - camX, mPosY - camY);
-
-    //Show shimmer
-    if (mFrame % 10 == 0) {
-        gShimmerTexture.render(mRenderer, mPosX - camX, mPosY - camY);
-    }
+    mTexture->renderOnce(mRenderer, static_cast<Uint8>(255.0 * (1.0 - static_cast<float>(mFrame) / mDuration)), mPosX - camX, mPosY - camY);
 
     //Animate
     mFrame++;

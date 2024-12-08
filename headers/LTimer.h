@@ -137,4 +137,15 @@ inline bool LTimer::isPaused() const {
     return mPaused && mStarted;
 }
 
+/*-----*
+Objects
+-------*/
+
+//The frames per second timer
+extern LTimer fpsTimer;
+
+//The frames per second cap timer
+extern LTimer capTimer;
+
+
 #endif //LTIMER_H

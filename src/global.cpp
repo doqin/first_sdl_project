@@ -4,6 +4,7 @@
 
 #include "../headers/AllHeaders.h"
 #include "../headers/global.h"
+#include <sstream>
 
 /*----------------*
 Constant variables
@@ -27,6 +28,12 @@ const int JOYSTICK_DEAD_ZONE = 1000;
 const int LEVEL_WIDTH = 1280;
 const int LEVEL_HEIGHT = 960;
 
+//Tile constants
+const int TILE_WIDTH = 80;
+const int TILE_HEIGHT = 80;
+const int TOTAL_TILES = 192;
+const int TOTAL_TILE_SPRITES = 12;
+
 /*--------------------*
 Non-constant variables
 ----------------------*/
@@ -42,6 +49,29 @@ LCamera gCamera = {0, 0, WINDOW_WIDTH, WINDOW_HEIGHT};
 int gTotalDisplays = 0;
 SDL_Rect* gDisplayBounds = nullptr;
 
+//Tile clips
+SDL_Rect gTileClips[TOTAL_TILE_SPRITES];
+
+//The frames per second timer
+LTimer fpsTimer;
+
+//The frames per second cap timer
+LTimer capTimer;
+
+//Set text color as white
+const SDL_Color textColor = {0xFF, 0xFF, 0xFF, 0xFF};
+
+//Start counting frames per second
+int countedFrames = 0;
+
+//Main loop flag
+bool quit = false;
+
+//Event handler
+SDL_Event e;
+
+//In memory text stream
+std::stringstream fpsText;
 
 /*------------------*
 Important Components
@@ -70,12 +100,13 @@ LWindow gWindow;
 //Text texture
 LTexture gFPSTextTexture;
 
-//RGB Particle textures
-LTexture gRedTexture;
-LTexture gGreenTexture;
-LTexture gBlueTexture;
+//Tile sprite sheet
+LTexture gTileTexture;
 
 //Shimmer texture
 LTexture gShimmerTexture;
+
+//Tiles
+LTile* tiles[TOTAL_TILES];
 
 

@@ -24,6 +24,9 @@ add_executable(${PROJECT_NAME}
         src/global.cpp
         src/eventHandler.cpp
         headers/LCamera.h
+        headers/LTile.h
+        src/collisionDetection.cpp
+        src/render.cpp
         #src/readWriteFile.cpp
         #src/textInput.cpp
 )

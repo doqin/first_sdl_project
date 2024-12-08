@@ -15,7 +15,8 @@ class LCamera {
         LCamera(int x, int y, int width, int height);
 
         //Update position
-        void updatePosition(int playerPosX, int playerPosY);
+        void updatePosX(int x);
+        void updatePosY(int y);
 
         //Update size
         void updateSize(int cameraWidth, int cameraHeight);
@@ -25,7 +26,7 @@ class LCamera {
         int getY();
         int getWidth();
         int getHeight();
-        SDL_Rect getRect();
+        SDL_Rect* getRect();
 
     private:
         SDL_Rect mCamera;
@@ -38,23 +39,12 @@ inline LCamera::LCamera(const int x, const int y, const int width, const int hei
     mCamera.h = height;
 }
 
-inline void LCamera::updatePosition(const int playerPosX, const int playerPosY) {
-    mCamera.x = playerPosX - mCamera.w / 2;
-    mCamera.y = playerPosY - mCamera.h / 2;
+inline void LCamera::updatePosX(const int x) {
+    mCamera.x = x;
+}
 
-    //Keep the camera in bounds
-    if (mCamera.x < 0) {
-        mCamera.x = 0;
-    }
-    if (mCamera.y < 0) {
-        mCamera.y = 0;
-    }
-    if (mCamera.x > LEVEL_WIDTH - mCamera.w) {
-        mCamera.x = LEVEL_WIDTH - mCamera.w;
-    }
-    if (mCamera.y > LEVEL_HEIGHT - mCamera.h) {
-        mCamera.y = LEVEL_HEIGHT - mCamera.h;
-    }
+inline void LCamera::updatePosY(const int y) {
+    mCamera.y = y;
 }
 
 inline void LCamera::updateSize(const int cameraWidth, const int cameraHeight) {
@@ -78,8 +68,8 @@ inline int LCamera::getHeight() {
     return mCamera.h;
 }
 
-inline SDL_Rect LCamera::getRect() {
-    return mCamera;
+inline SDL_Rect* LCamera::getRect() {
+    return &mCamera;
 }
 
 /*-----*

@@ -218,10 +218,8 @@ Objects
 //Text texture
 extern LTexture gFPSTextTexture;
 
-//RGB Particle textures
-extern LTexture gRedTexture;
-extern LTexture gGreenTexture;
-extern LTexture gBlueTexture;
+//Tile sprite sheet
+extern LTexture gTileTexture;
 
 //Shimmer texture
 extern LTexture gShimmerTexture;

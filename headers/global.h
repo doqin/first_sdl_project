@@ -7,6 +7,7 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <sstream>
 
 /*----------------*
 Constant variables
@@ -30,6 +31,27 @@ extern const int JOYSTICK_DEAD_ZONE;
 extern const int LEVEL_WIDTH;
 extern const int LEVEL_HEIGHT;
 
+//Tile constants
+extern const int TILE_WIDTH;
+extern const int TILE_HEIGHT;
+extern const int TOTAL_TILES;
+extern const int TOTAL_TILE_SPRITES;
+
+//The different tile sprites
+enum TILESPRITES {
+    TILE_RED,
+    TILE_GREEN,
+    TILE_BLUE,
+    TILE_CENTER,
+    TILE_TOP,
+    TILE_TOPRIGHT,
+    TILE_RIGHT,
+    TILE_BOTTOMRIGHT,
+    TILE_BOTTOM,
+    TILE_BOTTOMLEFT,
+    TILE_LEFT,
+    TILE_TOPLEFT,
+};
 /*--------------------*
 Non-constant variables
 ----------------------*/
@@ -41,6 +63,25 @@ extern float yDir;
 //Display data
 extern int gTotalDisplays;
 extern SDL_Rect* gDisplayBounds;
+
+//Tile clips
+extern SDL_Rect gTileClips[];
+
+//Set text color as white
+extern const SDL_Color textColor;
+
+//Frames elapsed
+extern int countedFrames;
+
+//Main loop flag
+extern bool quit;
+
+//Event handler
+extern SDL_Event e;
+
+//In memory text stream
+extern std::stringstream fpsText;
+
 
 /*------------------*
 Important Components

@@ -26,4 +26,7 @@
 //Get LCamera class
 #include "LCamera.h"
 
+//Get LTile class
+#include "LTile.h"
+
 #endif //ALLHEADERS_H
